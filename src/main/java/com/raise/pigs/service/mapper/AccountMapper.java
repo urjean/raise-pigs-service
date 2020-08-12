@@ -1,7 +1,7 @@
 package com.raise.pigs.service.mapper;
 
-import com.raise.pigs.service.entity.Account;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.raise.pigs.service.entity.Account;
 
 /**
  * <p>

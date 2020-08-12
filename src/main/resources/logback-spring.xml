@@ -100,6 +100,7 @@
     </appender>
 
 
+    <logger name="com.raise.pigs.service.mapper" level="DEBUG" />
 
     <root level="info">
         <appender-ref ref="CONSOLE" />

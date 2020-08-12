@@ -37,7 +37,7 @@ public class Account implements Serializable {
     /**
      * 账户类型
      */
-    private Boolean type;
+    private Integer type;
 
     /**
      * 职责描述
