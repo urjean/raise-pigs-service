@@ -13,26 +13,19 @@ public class ResultUtils {
     }
 
     public static <T> ResultBody<T> success(T data) {
-        ResultEnum code = ResultEnum.SUCCESS;
-        ResultBody<T> result = new ResultBody<>();
-        result.setCode(code.getCode());
-        result.setMsg(code.getMsg());
+        ResultBody<T> result = new ResultBody<>(ResultEnum.SUCCESS);
         result.setData(data);
         return result;
     }
 
     public static <T> ResultBody<T> successNoData() {
-        ResultEnum code = ResultEnum.SUCCESS;
-        ResultBody<T> result = new ResultBody<>();
-        result.setCode(code.getCode());
-        result.setMsg(code.getMsg());
-        return result;
+        return new ResultBody<>(ResultEnum.SUCCESS);
     }
 
-    public static <T> ResultBody<T> error(ResultEnum code) {
+    public static <T> ResultBody<T> error(ResultEnum resultEnum) {
         ResultBody<T> result = new ResultBody<>();
-        result.setCode(code.getCode());
-        result.setMsg(code.getMsg());
+        result.setCode(resultEnum.getCode());
+        result.setMsg(resultEnum.getMsg());
         return result;
     }
 

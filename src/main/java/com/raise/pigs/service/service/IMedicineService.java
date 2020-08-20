@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 public interface IMedicineService extends IService<Medicine> {
 

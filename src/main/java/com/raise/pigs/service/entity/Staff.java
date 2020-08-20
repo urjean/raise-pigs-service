@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,7 +24,7 @@ public class Staff implements Serializable {
     /**
      * 主键
      */
-    private Long staffId;
+    private Long id;
 
     /**
      * 员工姓名
@@ -39,7 +39,7 @@ public class Staff implements Serializable {
     /**
      * 员工性别（0：男；1：女）
      */
-    private Boolean gender;
+    private Integer gender;
 
     /**
      * 出生日期

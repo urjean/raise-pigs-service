@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -21,9 +21,9 @@ public class Position implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 职位主键
+     * 主键
      */
-    private Long positionId;
+    private Long id;
 
     /**
      * 职位名称

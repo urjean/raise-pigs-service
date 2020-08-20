@@ -4,7 +4,7 @@ import com.raise.pigs.service.utils.result.ResultEnum;
 
 /**
  * <p>
- *  业务异常类
+ * 业务异常类
  * </p>
  *
  * @author osumg
@@ -38,6 +38,12 @@ public class ServiceException extends RuntimeException {
         super(resultEnum.getMsg());
         this.code = resultEnum.getCode();
         this.msg = resultEnum.getMsg();
+    }
+
+    public ServiceException(String msg) {
+        super(msg);
+        this.code = -1;
+        this.msg = msg;
     }
 
     public ServiceException(Integer code, String msg) {

@@ -7,22 +7,22 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 账号表
+ * 用户表
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class Account implements Serializable {
+public class SysUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 主键
      */
-    private Long accountId;
+    private Long id;
 
     /**
      * 账户
@@ -30,19 +30,24 @@ public class Account implements Serializable {
     private String account;
 
     /**
+     * 用户名
+     */
+    private String username;
+
+    /**
      * 密码
      */
     private String password;
 
     /**
-     * 账户类型
+     * 上次登录时间
      */
-    private Integer type;
+    private LocalDateTime lastLoginTime;
 
     /**
-     * 职责描述
+     * 是否有效（1.有效；0.无效）
      */
-    private String description;
+    private Integer valid;
 
     /**
      * 创建时间

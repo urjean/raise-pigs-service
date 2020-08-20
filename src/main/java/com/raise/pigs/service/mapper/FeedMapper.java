@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 public interface FeedMapper extends BaseMapper<Feed> {
 

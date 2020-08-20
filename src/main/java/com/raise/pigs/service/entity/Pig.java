@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,7 +23,7 @@ public class Pig implements Serializable {
     /**
      * 主键
      */
-    private Long pigId;
+    private Long id;
 
     /**
      * 编号
@@ -48,27 +48,27 @@ public class Pig implements Serializable {
     /**
      * 性别（0：公；1：母）
      */
-    private Boolean gender;
+    private Integer gender;
 
     /**
      * 健康状态（0：不健康；1：健康）
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 检查情况（0：未检查；1：检查）
      */
-    private Boolean inspect;
+    private Integer inspect;
 
     /**
      * 出售情况（0：未售出；1：售出）
      */
-    private Boolean sale;
+    private Integer sale;
 
     /**
      * 怀孕（0：否；1：是）
      */
-    private Boolean pregnant;
+    private Integer pregnant;
 
     /**
      * 预计生产日期

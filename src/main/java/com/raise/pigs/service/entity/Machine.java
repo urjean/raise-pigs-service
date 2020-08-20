@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -22,7 +22,7 @@ public class Machine implements Serializable {
     /**
      * 主键
      */
-    private Long machineId;
+    private Long id;
 
     /**
      * 设备名称
@@ -37,7 +37,7 @@ public class Machine implements Serializable {
     /**
      * 状态（0：报废；1：完好；2：待维修）
      */
-    private Boolean status;
+    private Integer status;
 
     /**
      * 创建时间

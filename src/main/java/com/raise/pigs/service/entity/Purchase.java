@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author osumg
- * @since 2020-08-05
+ * @since 2020-08-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,7 +24,7 @@ public class Purchase implements Serializable {
     /**
      * 主键
      */
-    private Long purchaseId;
+    private Long id;
 
     /**
      * 采购类型
