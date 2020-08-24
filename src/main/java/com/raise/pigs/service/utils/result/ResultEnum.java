@@ -18,13 +18,11 @@ public enum ResultEnum {
     SERVICE_ERROR(500, "服务器内部错误"),
 
     NO_LOGIN(10000, "未登录"),
-    FAIL_LOGIN(10001, "登录失败"),
-    SUCCESS_LOGIN(0, "登录成功"),
+    FAIL_LOGIN(10001, "登录失败，用户名或密码错误"),
+    CHECK_FAIL(10002, "验证失败"),
 
-    PARAM_IS_INVALID(10001, "参数无效"),
-    PARAM_IS_BLANK(10002, "参数为空"),
-    PARAM_TYPE_BIND_ERROR(10003, "参数类型错误"),
-    PARAM_NOT_COMPLETE(10004, "参数缺失");
+    TOKEN_EXPIRATION(10003, "token无效或已过期");
+
 
     private final Integer code;
     private final String msg;

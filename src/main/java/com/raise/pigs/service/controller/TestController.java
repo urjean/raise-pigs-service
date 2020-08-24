@@ -1,24 +1,23 @@
 package com.raise.pigs.service.controller;
 
-
+import com.raise.pigs.service.config.globalException.ServiceException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 饲料表 前端控制器
+ *
  * </p>
  *
  * @author osumg
- * @since 2020-08-20
+ * @since 2020/8/21
  */
 @RestController
-@RequestMapping("/service/feed")
-public class FeedController {
+@RequestMapping("/test")
+public class TestController {
     @GetMapping("/s")
-    public String get(){
-        return "dslkjfa";
+    public String getS(){
+        return "test-s";
     }
 }

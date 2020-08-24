@@ -25,6 +25,7 @@ import java.io.IOException;
 public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
+        httpServletResponse.setContentType("application/json;charset=utf-8");
         ResultBody<Object> resultBody = new ResultBody<>(ResultEnum.NO_LOGIN);
         httpServletResponse.getWriter().write(new ObjectMapper().writeValueAsString(resultBody));
     }
