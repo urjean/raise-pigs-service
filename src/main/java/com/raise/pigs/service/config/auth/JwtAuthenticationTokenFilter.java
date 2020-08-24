@@ -2,7 +2,6 @@ package com.raise.pigs.service.config.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raise.pigs.service.config.JwtTokenUtil;
-import com.raise.pigs.service.config.auth.UserDetailsServiceImpl;
 import com.raise.pigs.service.utils.result.ResultEnum;
 import com.raise.pigs.service.utils.result.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
