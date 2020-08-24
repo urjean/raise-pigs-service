@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>
- *
+ *  token工具类
  * </p>
  *
  * @author osumg
@@ -22,8 +22,8 @@ public class JwtTokenUtil {
         return Jwts.builder()
                 .setClaims(null)
                 .setSubject(subject)
-                // 设置过期时间
-                .setExpiration(new Date(System.currentTimeMillis() + 10 * 1000))
+                // 设置过期时间 30天
+                .setExpiration(new Date(System.currentTimeMillis() + 2592000000L))
                 .signWith(SignatureAlgorithm.HS512, "_salt_osumg")
                 .compact();
     }

@@ -50,15 +50,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        if (sysUser != null) {
-            //获取该用户所拥有的权限
-            List<SysPermission> sysPermissions = iSysPermissionService.selectPermissionByUser(sysUser.getId());
-            // 声明用户授权
-            sysPermissions.forEach(sysPermission -> {
-                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(sysPermission.getPermissionCode());
-                grantedAuthorities.add(grantedAuthority);
-            });
-        }
+        //获取该用户所拥有的权限
+        List<SysPermission> sysPermissions = iSysPermissionService.selectPermissionByUser(sysUser.getId());
+        // 声明用户授权
+        sysPermissions.forEach(sysPermission -> {
+            GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(sysPermission.getPermissionCode());
+            grantedAuthorities.add(grantedAuthority);
+        });
         return new User(sysUser.getAccount(), sysUser.getPassword(), grantedAuthorities);
 
     }

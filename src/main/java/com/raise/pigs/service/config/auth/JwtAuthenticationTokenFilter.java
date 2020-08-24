@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.raise.pigs.service.config.JwtTokenUtil;
 import com.raise.pigs.service.utils.result.ResultEnum;
 import com.raise.pigs.service.utils.result.ResultUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,7 +27,6 @@ import java.io.IOException;
  * @author osumg
  * @since 2020/8/21
  */
-@Slf4j
 @Component
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     @Autowired

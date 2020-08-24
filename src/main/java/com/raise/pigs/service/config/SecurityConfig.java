@@ -65,9 +65,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
 
         ;
-// 记住我
-        http.rememberMe().rememberMeParameter("remember-me")
-                .userDetailsService(userDetailsService).tokenValiditySeconds(7200);
+        // 记住我 ， 使用了token，此处不需要了
+//        http.rememberMe().rememberMeParameter("remember-me")
+//                .userDetailsService(userDetailsService).tokenValiditySeconds(7200);
 
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandlerImpl); // 无权访问
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
