@@ -1,4 +1,4 @@
-package com.raise.pigs.service.config;
+package com.raise.pigs.service.config.auth;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
