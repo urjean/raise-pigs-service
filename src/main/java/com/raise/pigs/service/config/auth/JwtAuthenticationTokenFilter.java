@@ -20,7 +20,7 @@ import java.io.IOException;
 
 /**
  * <p>
- *
+ * jwt验证
  * </p>
  *
  * @author osumg

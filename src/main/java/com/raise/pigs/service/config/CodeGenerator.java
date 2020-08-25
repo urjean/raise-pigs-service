@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
+ * 表 自动代码生成
  */
 public class CodeGenerator {
 

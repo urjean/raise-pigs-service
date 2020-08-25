@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * <p>
- *
+ * 登录判断
  * </p>
  *
  * @author osumg

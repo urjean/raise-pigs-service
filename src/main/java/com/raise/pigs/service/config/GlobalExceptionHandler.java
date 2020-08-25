@@ -7,11 +7,13 @@ import com.raise.pigs.service.utils.result.ResultUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.security.SignatureException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
  * >
@@ -26,8 +28,8 @@ public class GlobalExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ExpiredJwtException.class)
-    public ResultBody<Object> expiredJwtException(ExpiredJwtException e){
-        return ResultUtils.error(-1,"token过期");
+    public ResultBody<Object> expiredJwtException(ExpiredJwtException e) {
+        return ResultUtils.error(-1, "token过期");
     }
 
     @ExceptionHandler(ServiceException.class)
@@ -54,6 +56,12 @@ public class GlobalExceptionHandler {
         }
         if (e instanceof ExpiredJwtException) {
             return ResultUtils.error(ResultEnum.CHECK_FAIL);
+        }
+        if (e instanceof MissingServletRequestParameterException) {
+            return ResultUtils.error(ResultEnum.PARAM_NOT_MATCH);
+        }
+        if(e instanceof SQLIntegrityConstraintViolationException){
+            return ResultUtils.error(ResultEnum.EXIST_UNIQUE);
         }
         return ResultUtils.error(ResultEnum.SERVICE_ERROR);
     }

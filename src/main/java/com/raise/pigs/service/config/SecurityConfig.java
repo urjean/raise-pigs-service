@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /**
  * <p>
- *
+ * spring security 配置
  * </p>
  *
  * @author osumg

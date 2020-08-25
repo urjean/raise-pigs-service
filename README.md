@@ -5,4 +5,5 @@
 * druid
 * logback
 * mybatis-plus
-* Spring Security(暂未使用)
+* Spring Security
+* jwt

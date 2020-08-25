@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.raise.pigs.service.mapper.SysUserMapper">
+    <select id="findAllUser" resultType="com.raise.pigs.service.entity.SysUser">
+        select id, account, username, last_login_time, create_time
+        from sys_user
+        where valid=1
+    </select>
 
+    <select id="findUserBy" resultType="com.raise.pigs.service.entity.SysUser"
+            parameterType="com.raise.pigs.service.entity.SysUser">
+        select id, account, username, last_login_time, create_time
+        from sys_user
+        where valid=1
+        and account like concat('%', #{sysUser.account},'%')
+    </select>
 </mapper>

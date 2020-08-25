@@ -64,22 +64,4 @@ public class SysUser implements Serializable {
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createTime;
 
-    /**
-     * 修改时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    private LocalDateTime updateTime;
-
-    /**
-     * 创建人
-     */
-    private Long createBy;
-
-    /**
-     * 修改人
-     */
-    private Long updateBy;
-
-
 }

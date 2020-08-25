@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>
- *  token工具类
+ * token工具类
  * </p>
  *
  * @author osumg

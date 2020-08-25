@@ -21,7 +21,8 @@ public enum ResultEnum {
     FAIL_LOGIN(10001, "登录失败，用户名或密码错误"),
     CHECK_FAIL(10002, "验证失败"),
 
-    TOKEN_EXPIRATION(10003, "token无效或已过期");
+    TOKEN_EXPIRATION(10003, "token无效或已过期"),
+    EXIST_UNIQUE(11111, "相关条目有数据存在");
 
 
     private final Integer code;
