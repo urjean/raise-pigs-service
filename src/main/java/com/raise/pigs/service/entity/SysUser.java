@@ -4,8 +4,11 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.raise.pigs.service.utils.LongToString;
+import com.raise.pigs.service.utils.StringToLong;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +31,8 @@ public class SysUser implements Serializable {
     /**
      * 主键
      */
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
     private Long id;
 
     /**

@@ -39,4 +39,4 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 server:
-  port: 9091
+  port: 10001

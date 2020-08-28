@@ -4,6 +4,8 @@
 * lombok
 * druid
 * logback
+* mybatis
 * mybatis-plus
 * Spring Security
 * jwt
+* hibernate-validator

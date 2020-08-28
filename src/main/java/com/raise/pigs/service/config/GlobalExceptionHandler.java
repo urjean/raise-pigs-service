@@ -7,6 +7,10 @@ import com.raise.pigs.service.utils.result.ResultUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -14,6 +18,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.security.SignatureException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
 
 /**
  * >
@@ -48,6 +53,18 @@ public class GlobalExceptionHandler {
     public ResultBody<Object> exceptionHandler(Exception e) {
         logger.error(e.getMessage());
 
+        if (e instanceof MethodArgumentNotValidException) {
+            BindingResult result = ((MethodArgumentNotValidException) e).getBindingResult();
+            if (result.hasErrors()) {
+                List<ObjectError> errors = result.getAllErrors();
+                StringBuilder builder = new StringBuilder("参数异常");
+                errors.forEach(item -> {
+                    builder.append(",").append(item.getDefaultMessage());
+                });
+                return ResultUtils.error(400, builder.toString());
+            }
+
+        }
         if (e instanceof NoHandlerFoundException) {
             return ResultUtils.error(ResultEnum.NO_HANDLER_FOUND);
         }
@@ -60,9 +77,14 @@ public class GlobalExceptionHandler {
         if (e instanceof MissingServletRequestParameterException) {
             return ResultUtils.error(ResultEnum.PARAM_NOT_MATCH);
         }
-        if(e instanceof SQLIntegrityConstraintViolationException){
+        if (e instanceof SQLIntegrityConstraintViolationException) {
             return ResultUtils.error(ResultEnum.EXIST_UNIQUE);
         }
+        if (e instanceof HttpMessageNotReadableException) {
+            return ResultUtils.error(ResultEnum.PARAM_NOT_MATCH);
+        }
+
+
         return ResultUtils.error(ResultEnum.SERVICE_ERROR);
     }
 

@@ -1,19 +1,23 @@
 package com.raise.pigs.service.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.raise.pigs.service.entity.SysUser;
 import com.raise.pigs.service.service.ISysUserService;
 import com.raise.pigs.service.utils.result.ResultBody;
 import com.raise.pigs.service.utils.result.ResultUtils;
 import com.raise.pigs.service.utils.snowflake.SnowflakeUtils;
+import com.raise.pigs.service.vo.sys.user.SysUserModifyVo;
+import com.raise.pigs.service.vo.sys.user.SysUserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * <p>
@@ -32,17 +36,16 @@ public class SysUserController {
     /**
      * 根据账号查询用户信息
      *
-     * @param map
+     * @param sysUserVo
      * @return
      */
     @PostMapping("/find-by")
-    public ResultBody<Object> findBy(@RequestBody Map<String, Object> map) {
-        // todo 参数校验
+    public ResultBody<Object> findBy(@RequestBody @Valid SysUserVo sysUserVo) {
         Page<SysUser> page = new Page<>();
-        page.setCurrent((Integer) map.get("current"));
-        page.setSize((Integer) map.get("size"));
+        page.setCurrent(sysUserVo.getCurrent());
+        page.setSize(sysUserVo.getSize());
         SysUser sysUser = new SysUser();
-        sysUser.setAccount((String) map.get("account"));
+        sysUser.setAccount(sysUserVo.getAccount());
         return ResultUtils.success(iSysUserService.findUserBy(page, sysUser));
     }
 
@@ -92,5 +95,31 @@ public class SysUserController {
         HashMap<String, Object> map = new HashMap<>();
         map.put("hasOne", !(sysUser == null));
         return ResultUtils.success(map);
+    }
+
+    /**
+     * 修改用户
+     *
+     * @param sysUserModifyVo
+     * @return
+     */
+    @PutMapping("/modify")
+    public ResultBody<Object> modifyBy(@RequestBody @Valid SysUserModifyVo sysUserModifyVo) {
+        UpdateWrapper<SysUser> wrapper = new UpdateWrapper<>();
+        wrapper.eq("id", sysUserModifyVo.getId()).set("username", sysUserModifyVo.getUsername());
+        iSysUserService.update(wrapper);
+        return ResultUtils.successNoData();
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/delete/{id}")
+    public ResultBody<Object> deleteById(@PathVariable @NotNull Long id) {
+        iSysUserService.removeById(id);
+        return ResultUtils.successNoData();
     }
 }
