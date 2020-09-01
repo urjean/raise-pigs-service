@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.raise.pigs.service.mapper.PigMapper">
-
+    <select id="findPig" resultType="com.raise.pigs.service.po.pig.FindPigPO"
+            parameterType="com.raise.pigs.service.vo.pig.FindPigVO">
+        select p.*, k.kind_name
+        from pig p
+        left join kind k on p.kind_id = k.id
+    </select>
 </mapper>

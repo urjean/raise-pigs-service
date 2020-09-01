@@ -36,7 +36,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             String authToken = authHeader.substring("Bearer ".length());
             String username = null;
             try {
-                username = JwtTokenUtil.getUsername(authToken);
+                username = JwtTokenUtils.getUsername(authToken);
             } catch (Exception e) {
                 response.setContentType("application/json;charset=utf-8");
                 response.getWriter().write(new ObjectMapper().writeValueAsString(ResultUtils.error(ResultEnum.TOKEN_EXPIRATION)));
@@ -44,7 +44,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             }
 
             if (!StringUtils.isEmpty(username)) {
-                List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList((String) JwtTokenUtil.getAuthority(authToken));
+                List<GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList((String) JwtTokenUtils.getAuthority(authToken));
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }

@@ -8,7 +8,6 @@ import com.raise.pigs.service.utils.result.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
@@ -50,7 +49,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("userInfo", sysUser);
-        map.put("token", JwtTokenUtil.generateToken(authentication.getName(), builder.toString()));
+        map.put("token", JwtTokenUtils.generateToken(authentication.getName(), new ObjectMapper().writeValueAsString(sysUser), builder.toString()));
 
         httpServletResponse.setContentType("application/json;charset=utf-8");
         httpServletResponse.getWriter().write(new ObjectMapper().writeValueAsString(ResultUtils.success(map)));

@@ -1,5 +1,6 @@
 package com.raise.pigs.service.vo.sys.user;
 
+import com.raise.pigs.service.vo.BasePage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,22 +17,10 @@ import java.io.Serializable;
  * @since 2020/8/25
  */
 @Data
-public class SysUserVo implements Serializable {
+public class SysUserVO extends BasePage implements Serializable {
     /**
      * 账号
      */
     @NotBlank(message = "账号不能为空")
     private String account;
-
-    /**
-     * 每页显示大小
-     */
-    @NotNull(message = "每页大小不能为空")
-    private Integer size;
-
-    /**
-     * 当前页码
-     */
-    @NotNull(message = "当前页码不能为空")
-    private Integer current;
 }

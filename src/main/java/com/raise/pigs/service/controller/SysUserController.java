@@ -8,8 +8,8 @@ import com.raise.pigs.service.service.ISysUserService;
 import com.raise.pigs.service.utils.result.ResultBody;
 import com.raise.pigs.service.utils.result.ResultUtils;
 import com.raise.pigs.service.utils.snowflake.SnowflakeUtils;
-import com.raise.pigs.service.vo.sys.user.SysUserModifyVo;
-import com.raise.pigs.service.vo.sys.user.SysUserVo;
+import com.raise.pigs.service.vo.sys.user.SysUserModifyVO;
+import com.raise.pigs.service.vo.sys.user.SysUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +40,7 @@ public class SysUserController {
      * @return
      */
     @PostMapping("/find-by")
-    public ResultBody<Object> findBy(@RequestBody @Valid SysUserVo sysUserVo) {
+    public ResultBody<Object> findBy(@RequestBody @Valid SysUserVO sysUserVo) {
         Page<SysUser> page = new Page<>();
         page.setCurrent(sysUserVo.getCurrent());
         page.setSize(sysUserVo.getSize());
@@ -104,7 +104,7 @@ public class SysUserController {
      * @return
      */
     @PutMapping("/modify")
-    public ResultBody<Object> modifyBy(@RequestBody @Valid SysUserModifyVo sysUserModifyVo) {
+    public ResultBody<Object> modifyBy(@RequestBody @Valid SysUserModifyVO sysUserModifyVo) {
         UpdateWrapper<SysUser> wrapper = new UpdateWrapper<>();
         wrapper.eq("id", sysUserModifyVo.getId()).set("username", sysUserModifyVo.getUsername());
         iSysUserService.update(wrapper);

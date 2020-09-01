@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.raise.pigs.service.mapper.KindMapper">
-
+    <select id="findAllKind" resultType="com.raise.pigs.service.po.kind.KindFindPO"
+            parameterType="com.raise.pigs.service.vo.kind.KindFindVO">
+        select k.*, f.feed_name feedName, p.number pigstyNumber
+        from kind k
+        left join pigsty p on k.pigsty_id = p.id
+        left join feed f on k.feed_id = f.id
+        where 1=1
+        <if test="kindFindVO.kindName != null and kindFindVO.kindName != ''">
+            and kind_name like concat('%',#{kindFindVO.kindName},'%')
+        </if>
+        <if test="kindFindVO.smallPrice != null and kindFindVO.smallPrice != ''">
+            and kind_price <![CDATA[>=]]> #{kindFindVO.smallPrice}
+        </if>
+        <if test="kindFindVO.bigPrice != null and kindFindVO.bigPrice != ''">
+            and kind_price <![CDATA[<=]]> #{kindFindVO.bigPrice}
+        </if>
+    </select>
 </mapper>

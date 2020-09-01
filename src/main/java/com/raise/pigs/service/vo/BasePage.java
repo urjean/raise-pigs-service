@@ -3,6 +3,7 @@ package com.raise.pigs.service.vo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -14,25 +15,16 @@ import java.io.Serializable;
  * @since 2020/8/25
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
 public class BasePage implements Serializable {
     /**
      * 每页显示大小
      */
-    private long size;
+    @NotNull(message = "每页大小不能为空")
+    private Integer size;
 
     /**
      * 当前页码
      */
-    private long current;
-
-    /**
-     * 最大页数
-     */
-    private long maxCurrent;
-
-    /**
-     * 数据总条数
-     */
-    private long total;
+    @NotNull(message = "当前页码不能为空")
+    private Integer current;
 }

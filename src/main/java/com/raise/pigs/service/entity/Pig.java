@@ -3,6 +3,11 @@ package com.raise.pigs.service.entity;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.raise.pigs.service.utils.LongToString;
+import com.raise.pigs.service.utils.StringToLong;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,6 +28,8 @@ public class Pig implements Serializable {
     /**
      * 主键
      */
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
     private Long id;
 
     /**
@@ -33,12 +40,9 @@ public class Pig implements Serializable {
     /**
      * 种类主键
      */
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
     private Long kindId;
-
-    /**
-     * 猪圈主键
-     */
-    private Long pigstyId;
 
     /**
      * 年龄（月）
@@ -88,11 +92,15 @@ public class Pig implements Serializable {
     /**
      * 创建人
      */
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
     private Long createBy;
 
     /**
      * 修改人
      */
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
     private Long updateBy;
 
 

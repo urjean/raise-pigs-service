@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.raise.pigs.service.utils.LongToString;
 import com.raise.pigs.service.utils.StringToLong;
+import com.raise.pigs.service.vo.BaseModify;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @since 2020/8/27
  */
 @Data
-public class SysUserModifyVo implements Serializable {
+public class SysUserModifyVO extends BaseModify implements Serializable {
 
     /**
      * id不能为空
