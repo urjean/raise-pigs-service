@@ -20,7 +20,6 @@ public class FindPigVO extends BasePage {
     /**
      * 编号
      */
-    @Size(max = 11, message = "编号不超过11个字符")
     private Integer number;
 
     /**

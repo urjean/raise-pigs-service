@@ -46,7 +46,7 @@ public class PigController {
      * @param findPigVO
      * @return
      */
-    @GetMapping("/find")
+    @PostMapping("/find")
     public ResultBody<Object> findKind(@RequestBody @Valid FindPigVO findPigVO) {
         Page<FindPigPO> page = new Page<>();
         page.setCurrent(findPigVO.getCurrent());

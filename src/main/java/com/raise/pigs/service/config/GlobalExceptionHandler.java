@@ -30,7 +30,6 @@ import java.util.List;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(ExpiredJwtException.class)
     public ResultBody<Object> expiredJwtException(ExpiredJwtException e) {
@@ -39,19 +38,19 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ServiceException.class)
     public ResultBody<Object> serviceExceptionHandler(ServiceException e) {
-        logger.error(e.getMessage());
+        e.printStackTrace();
         return ResultUtils.error(e.getCode(), e.getMsg());
     }
 
     @ExceptionHandler(NullPointerException.class)
     public ResultBody<Object> nullExceptionHandler(NullPointerException e) {
-        logger.error(e.getMessage());
+        e.printStackTrace();
         return ResultUtils.error(ResultEnum.PARAM_NOT_MATCH);
     }
 
     @ExceptionHandler(Exception.class)
     public ResultBody<Object> exceptionHandler(Exception e) {
-        logger.error(e.getMessage());
+        e.printStackTrace();
 
         if (e instanceof MethodArgumentNotValidException) {
             BindingResult result = ((MethodArgumentNotValidException) e).getBindingResult();
@@ -83,7 +82,6 @@ public class GlobalExceptionHandler {
         if (e instanceof HttpMessageNotReadableException) {
             return ResultUtils.error(ResultEnum.PARAM_NOT_MATCH);
         }
-
 
         return ResultUtils.error(ResultEnum.SERVICE_ERROR);
     }

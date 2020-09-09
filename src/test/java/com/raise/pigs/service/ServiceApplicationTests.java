@@ -4,26 +4,19 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.raise.pigs.service.entity.SysUser;
 import com.raise.pigs.service.mapper.SysUserMapper;
-import com.raise.pigs.service.utils.snowflake.SnowflakeUtils;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.Data;
+import com.raise.pigs.service.utils.RedisUtils;
 import org.junit.jupiter.api.Test;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
 
 @SpringBootTest
 class ServiceApplicationTests {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Test
     void contextLoads() {
@@ -38,8 +31,10 @@ class ServiceApplicationTests {
 
     @Test
     void customTest() {
-        HashMap<Object, Object> map = new HashMap<>();
-        Integer a = (Integer) map.get("dsajkdfj");
-        System.out.println(a);
+        System.out.println(redisUtils.hasKey("number"));
+        System.out.println(redisUtils.get("number"));
+
+        redisUtils.set("mykey","this is mykey");
+        System.out.println(redisUtils.get("mykey"));
     }
 }
