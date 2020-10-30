@@ -1,5 +1,9 @@
 package com.raise.pigs.service.vo.pig;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.raise.pigs.service.utils.LongToString;
+import com.raise.pigs.service.utils.StringToLong;
 import com.raise.pigs.service.vo.BasePage;
 import lombok.Data;
 
@@ -18,14 +22,11 @@ import javax.validation.constraints.Size;
 public class FindPigVO extends BasePage {
 
     /**
-     * 编号
+     * id
      */
-    private Integer number;
-
-    /**
-     * 种类id
-     */
-    private Long kindId;
+    @JsonSerialize(using = LongToString.class)
+    @JsonDeserialize(using = StringToLong.class)
+    private Long id;
 
     /**
      * 年龄区间（小）

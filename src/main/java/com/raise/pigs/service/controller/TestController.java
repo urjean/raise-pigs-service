@@ -1,9 +1,9 @@
 package com.raise.pigs.service.controller;
 
 import com.raise.pigs.service.config.globalException.ServiceException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.raise.pigs.service.utils.RedisUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -16,8 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+    @Autowired
+    private RedisUtils redisUtils;
+
     @GetMapping("/s")
-    public String getS(){
+    public String getS() {
         return "test-s";
     }
+
+    @GetMapping("/get/{key}")
+    public String getRedis(@PathVariable String key) {
+        return redisUtils.get(key);
+    }
+
+    @PostMapping("/set")
+    public void setRedis(String key, String value) {
+        redisUtils.set(key, value);
+    }
+
 }

@@ -1,21 +1,16 @@
 package com.raise.pigs.service.controller;
 
-
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.raise.pigs.service.config.auth.JwtTokenUtils;
 import com.raise.pigs.service.config.globalException.ServiceException;
-import com.raise.pigs.service.entity.Kind;
 import com.raise.pigs.service.entity.Pig;
-import com.raise.pigs.service.po.kind.KindFindPO;
 import com.raise.pigs.service.po.pig.FindPigPO;
 import com.raise.pigs.service.service.IPigService;
 import com.raise.pigs.service.utils.WrapperUtils;
 import com.raise.pigs.service.utils.result.ResultBody;
 import com.raise.pigs.service.utils.result.ResultUtils;
 import com.raise.pigs.service.utils.snowflake.SnowflakeUtils;
-import com.raise.pigs.service.vo.kind.KindFindVO;
-import com.raise.pigs.service.vo.kind.KindModifyVO;
 import com.raise.pigs.service.vo.pig.FindPigVO;
 import com.raise.pigs.service.vo.pig.ModifyPigVO;
 import org.apache.commons.lang3.StringUtils;
@@ -88,7 +83,7 @@ public class PigController {
         WrapperUtils.setUpdateTimeAndCreator(wrapper, authorization);
 
         if (modifyPigVO.getAge() != null) {
-            wrapper.set("kind_price", modifyPigVO.getAge());
+            wrapper.set("age", modifyPigVO.getAge());
         }
 
         if (StringUtils.isBlank(wrapper.getSqlSet())) {

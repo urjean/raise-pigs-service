@@ -9,3 +9,4 @@
 * Spring Security
 * jwt
 * hibernate-validator
+* redis

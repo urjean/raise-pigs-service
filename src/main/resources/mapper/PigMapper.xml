@@ -6,5 +6,9 @@
         select p.*, k.kind_name
         from pig p
         left join kind k on p.kind_id = k.id
+        where 1=1
+        <if test="findPigVO.id != null and findPigVO.id != ''">
+            and p.id like concat('%',#{findPigVO.id}, '%')
+        </if>
     </select>
 </mapper>

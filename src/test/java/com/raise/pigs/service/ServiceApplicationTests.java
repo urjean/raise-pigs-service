@@ -31,10 +31,6 @@ class ServiceApplicationTests {
 
     @Test
     void customTest() {
-        System.out.println(redisUtils.hasKey("number"));
-        System.out.println(redisUtils.get("number"));
 
-        redisUtils.set("mykey","this is mykey");
-        System.out.println(redisUtils.get("mykey"));
     }
 }

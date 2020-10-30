@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @since 2020/8/27
  */
 @Data
-public class SysUserModifyVO extends BaseModify implements Serializable {
+public class SysUserModifyVO implements Serializable {
 
     /**
      * id不能为空

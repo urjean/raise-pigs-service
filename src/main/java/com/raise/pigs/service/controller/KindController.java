@@ -42,7 +42,7 @@ public class KindController {
      * @param kindFindVO
      * @return
      */
-    @GetMapping("/find")
+    @PostMapping("/find")
     public ResultBody<Object> findKind(@RequestBody @Valid KindFindVO kindFindVO) {
         Page<KindFindPO> page = new Page<>();
         page.setCurrent(kindFindVO.getCurrent());

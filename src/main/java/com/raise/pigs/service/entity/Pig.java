@@ -33,11 +33,6 @@ public class Pig implements Serializable {
     private Long id;
 
     /**
-     * 编号
-     */
-    private Integer number;
-
-    /**
      * 种类主键
      */
     @JsonSerialize(using = LongToString.class)
